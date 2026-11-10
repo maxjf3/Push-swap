@@ -3,7 +3,8 @@ CC = cc
 
 MY_SOURCES =	srcs/push_swap.c \
 				srcs/simple.c \
-				srcs/disorder.c
+				srcs/disorder.c \
+				srcs/instructions.c
 
 PRINTF_SOURCES =	printf/ft_printf.c \
 					printf/ft_unsigned_itoa.c \

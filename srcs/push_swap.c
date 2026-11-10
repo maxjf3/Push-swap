@@ -6,7 +6,7 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 15:27:24 by mjardin           #+#    #+#             */
-/*   Updated: 2026/11/10 06:04:17 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/11/10 07:16:22 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../include/libft.h"
 
 int	verif_args(char *argv[], int *algo)
- {
+{
 	int	i;
 	int	j;
 
@@ -41,10 +41,10 @@ int	verif_args(char *argv[], int *algo)
 		i++;
 	}
 	return (1);
- }
+}
 
- int	*init_tab(int argc, char *argv[])
- {
+int	*init_tab(int argc, char *argv[])
+{
 	int	i;
 	int	j;
 	int	*tab;
@@ -59,31 +59,40 @@ int	verif_args(char *argv[], int *algo)
 		j++;
 	}
 	return (tab);
- }
+}
 
- void	launch_algo(int algo, int *tab)
- {
+void	print_tab(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("%d, ", tab[i]);
+		i++;
+	}
+}
+
+void	launch_algo(int algo, int *tab, int size)
+{
 	if (algo == 1)
-		simple_algo(tab);
-	// if (algo == 2)
-	// 	medium_algo();
-	// if (algo == 3)
-	// 	complex_algo();
-	// if (algo == 4)
-	// 	find_best_algo();
- }
+	{
+		tab = simple_algo(tab, size);
+		print_tab(tab, size);
+	}
+}
 
 int	main(int argc, char *argv[])
 {
-	int	algo;
-	int	*tab;
-	float disorder;
+	int		algo;
+	int		*tab;
+	float	disorder;
 
 	algo = 0;
 	if (argc < 4)
 	{
 		ft_printf("Error: not enough arguments.\n");
-		return (-1);	
+		return (-1);
 	}
 	if (!verif_args(argv, &algo))
 	{
@@ -97,7 +106,7 @@ int	main(int argc, char *argv[])
 	}
 	tab = init_tab(argc - 2, argv);
 	disorder = compute_disorder(tab, argc - 2);
-	printf("%.2f\n", disorder);
-	launch_algo(algo, tab);
+	printf("Disorder : %.2f\n", disorder);
+	launch_algo(algo, tab, argc - 2);
 	return (0);
 }
