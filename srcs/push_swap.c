@@ -6,7 +6,7 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 15:27:24 by mjardin           #+#    #+#             */
-/*   Updated: 2026/11/10 07:16:22 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/11/10 07:34:25 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,17 @@ void	print_tab(int *tab, int size)
 	}
 }
 
-void	launch_algo(int algo, int *tab, int size)
+int	launch_algo(int algo, int *tab, int size)
 {
+	int operations;
+	
+	operations = 0;
 	if (algo == 1)
 	{
-		tab = simple_algo(tab, size);
+		tab = simple_algo(tab, size, &operations);
 		print_tab(tab, size);
 	}
+	return (operations);
 }
 
 int	main(int argc, char *argv[])
@@ -107,6 +111,6 @@ int	main(int argc, char *argv[])
 	tab = init_tab(argc - 2, argv);
 	disorder = compute_disorder(tab, argc - 2);
 	printf("Disorder : %.2f\n", disorder);
-	launch_algo(algo, tab, argc - 2);
+	ft_printf("\nOperations : %d\n", launch_algo(algo, tab, argc - 2));
 	return (0);
 }
