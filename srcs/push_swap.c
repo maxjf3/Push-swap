@@ -6,7 +6,7 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 15:27:24 by mjardin           #+#    #+#             */
-/*   Updated: 2026/11/10 07:34:25 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/11/10 09:18:47 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	main(int argc, char *argv[])
 	int		algo;
 	int		*tab;
 	float	disorder;
+	int		operations;
+	int		prc;
 
 	algo = 0;
 	if (argc < 4)
@@ -110,7 +112,10 @@ int	main(int argc, char *argv[])
 	}
 	tab = init_tab(argc - 2, argv);
 	disorder = compute_disorder(tab, argc - 2);
-	printf("Disorder : %.2f\n", disorder);
-	ft_printf("\nOperations : %d\n", launch_algo(algo, tab, argc - 2));
+	//printf("Disorder : %f\n", disorder); a faire plus tard
+	operations = launch_algo(algo, tab, argc - 2);
+	ft_printf("\nOperations : %d\n", operations);
+	prc = (argc - 2 / operations) * 100;
+	ft_printf("Pourcentage : %d%\n", prc);
 	return (0);
 }

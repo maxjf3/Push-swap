@@ -6,14 +6,14 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 05:52:26 by mjardin           #+#    #+#             */
-/*   Updated: 2026/11/10 07:22:35 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/11/10 08:59:20 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	compute_disorder(int *tab, int size)
+double	compute_disorder(int *tab, int size)
 {
-	float	mistakes;
-	float	total_pairs;
+	int		mistakes;
+	int		total_pairs;
 	int		i;
 	int		j;
 
@@ -32,5 +32,5 @@ float	compute_disorder(int *tab, int size)
 		}
 		i++;
 	}
-	return (mistakes / total_pairs);
+	return ((double)mistakes / (double)total_pairs);
 }
